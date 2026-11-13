@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMINA PRISM — Interactive 3D Showcase</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="canvas-container"></div>
+
+<div id="hud" class="hud">
+  <div class="hud-panel hud-title">
+    <h1>LUMINA PRISM</h1>
+    <p>Interactive 3D Showcase</p>
+  </div>
+
+  <div class="hud-controls">
+    <div class="hud-panel hud-presets">
+      <span class="hud-label">Camera Views</span>
+      <div class="btn-group">
+        <button data-preset="hero" class="preset-btn active">Hero</button>
+        <button data-preset="top" class="preset-btn">Top</button>
+        <button data-preset="detail" class="preset-btn">Detail</button>
+      </div>
+    </div>
+
+    <div class="hud-panel hud-colorways">
+      <span class="hud-label">Colorway</span>
+      <div class="btn-group">
+        <button data-colorway="midnight" class="color-btn active">Midnight</button>
+        <button data-colorway="arctic" class="color-btn">Arctic</button>
+        <button data-colorway="sunset" class="color-btn">Sunset</button>
+      </div>
+    </div>
+
+    <div class="hud-panel hud-lighting">
+      <span class="hud-label">Lighting</span>
+      <div class="btn-group">
+        <button data-lighting="warm" class="light-btn active">Warm</button>
+        <button data-lighting="cool" class="light-btn">Cool</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hud-panel hud-footer">
+    <span>Drag to orbit · Scroll to zoom</span>
+  </div>
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

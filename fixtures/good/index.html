@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:," />
+  <title>ChronoCore 3D Showcase</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js",
+      "three/addons/": "./vendor/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="viewport"></canvas>
+  <aside class="hud">
+    <div class="group">
+      <button id="btn-hero" type="button">Hero</button>
+      <button id="btn-top" type="button">Top</button>
+      <button id="btn-detail" type="button">Detail</button>
+    </div>
+    <div class="group">
+      <button id="btn-colorway" type="button">Finish</button>
+      <button id="btn-lighting" type="button">Lighting</button>
+    </div>
+  </aside>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿.venv/
+.eval_artifacts/
+__pycache__/
+*.pyc
+workspace/vendor/
