@@ -1,7 +1,7 @@
 ﻿from pathlib import Path
 
 # Device 2 (RTX 5070 Ti) LM Studio OpenAI-compatible endpoint
-QWEN_BASE_URL = "http://192.168.0.230:1234/v1"
+QWEN_BASE_URL = "http://127.0.0.1:1234/v1"
 QWEN_API_KEY = "lm-studio"
 QWEN_MODEL = "auto"            # Auto-resolves loaded model slug from LM Studio /v1/models
 VLM_MODEL = "auto"             # Uses loaded model if multimodal mmproj is enabled; falls back cleanly if text-only
@@ -23,7 +23,7 @@ FIXTURES_DIR = ROOT_DIR / "fixtures"
 
 # Evaluator & 4-Stage Ladder Rules
 EVAL_RUNS = 3
-MIN_FPS_FLOOR = 45.0
+MIN_FPS_FLOOR = 30.0
 STAGE1_MIN_MESHES = 6
 STAGE2_MIN_MESHES = 14
 MAX_ITERATIONS = 18

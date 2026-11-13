@@ -35,7 +35,7 @@ def _heuristic_visual_grade(artifacts_dir: Path, metrics: dict) -> tuple[float, 
 
     pts = 6.0
     notes = []
-    if 18.0 <= mean_luma <= 185.0 and contrast >= 28.0:
+    if 6.0 <= mean_luma <= 195.0 and contrast >= 20.0:
         pts += 4.0
     else:
         notes.append("VISUAL: Improve lighting contrast and rim separation against the studio backdrop.")

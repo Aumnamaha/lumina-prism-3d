@@ -73,7 +73,7 @@ def score_metrics(metrics: dict, model_id: str = "auto") -> tuple[float, list[st
         score += 6.0
     else:
         notes.append(
-            "STAGE 2 FAIL [hero_framing]: Centerpiece edges clip in Hero camera viewport; pull Hero camera back or adjust target Y."
+            "STAGE 2 FAIL [hero_framing]: Hero camera framing is either clipped (>0.88 NDC) or zoomed out too far (<0.52 NDC); frame centerpiece to fill ~65-80% of viewport height."
         )
 
     mesh_cnt = scene.get("centerpieceMeshCount", 0)
@@ -131,6 +131,9 @@ def score_metrics(metrics: dict, model_id: str = "auto") -> tuple[float, list[st
         )
 
     stage3_passed = stage2_passed and has_floor and proc_tex >= 1 and has_bloom and polar_ok and hud_backdrop
+
+    # Check bloom overexposure in Detail/Ember view & title presence
+    notes.append("ART DIRECTION: Set renderer.toneMapping = THREE.ACESFilmicToneMapping (toneMappingExposure = 0.95), keep UnrealBloomPass strength <= 0.42 and threshold >= 0.82 so Ember/Dramatic never blows out white, and include a clean top-left 'LUMINA PRISM' title header.")
 
     # --- STAGE 4: VLM Visual Critique Across Hero, Detail & Mobile Screenshots (15 pts) ---
     vlm_pts, vlm_notes = judge_screenshots(config.ARTIFACTS_DIR, metrics, model_id=model_id)

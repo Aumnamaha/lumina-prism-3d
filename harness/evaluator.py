@@ -285,7 +285,7 @@ def _run_single_pass(base_url: str, artifacts_dir: Path, save_screenshots: bool)
                             }
                         }
                     }
-                    heroFramingClean = maxAbsNdcX <= 0.94 && maxAbsNdcY <= 0.94;
+                    heroFramingClean = maxAbsNdcX <= 0.92 && maxAbsNdcY >= 0.52 && maxAbsNdcY <= 0.88;
                 }
 
                 const desktopHud = window.__checkHudBounds();

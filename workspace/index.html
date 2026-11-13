@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUMINA PRISM — Interactive 3D Showcase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>LUMINA PRISM — 3D Product Showcase</title>
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="style.css">
+<div class="brand-header" id="brandHeader"><span>LUMINA</span><span>PRISM</span></div>
+<link rel="stylesheet" href="./style.css">
 <script type="importmap">
 {
   "imports": {
@@ -16,47 +17,27 @@
 </script>
 </head>
 <body>
-<div id="canvas-container"></div>
-
-<div id="hud" class="hud">
-  <div class="hud-panel hud-title">
-    <h1>LUMINA PRISM</h1>
-    <p>Interactive 3D Showcase</p>
+<canvas id="gl"></canvas>
+<div class="hud" id="hud">
+  <div class="hud-panel presets-panel">
+    <span class="hud-label">CAMERAS</span>
+    <button class="hud-btn" data-preset="hero">Hero</button>
+    <button class="hud-btn" data-preset="top">Top</button>
+    <button class="hud-btn" data-preset="detail">Detail</button>
   </div>
-
-  <div class="hud-controls">
-    <div class="hud-panel hud-presets">
-      <span class="hud-label">Camera Views</span>
-      <div class="btn-group">
-        <button data-preset="hero" class="preset-btn active">Hero</button>
-        <button data-preset="top" class="preset-btn">Top</button>
-        <button data-preset="detail" class="preset-btn">Detail</button>
-      </div>
-    </div>
-
-    <div class="hud-panel hud-colorways">
-      <span class="hud-label">Colorway</span>
-      <div class="btn-group">
-        <button data-colorway="midnight" class="color-btn active">Midnight</button>
-        <button data-colorway="arctic" class="color-btn">Arctic</button>
-        <button data-colorway="sunset" class="color-btn">Sunset</button>
-      </div>
-    </div>
-
-    <div class="hud-panel hud-lighting">
-      <span class="hud-label">Lighting</span>
-      <div class="btn-group">
-        <button data-lighting="warm" class="light-btn active">Warm</button>
-        <button data-lighting="cool" class="light-btn">Cool</button>
-      </div>
-    </div>
+  <div class="hud-panel colorways-panel">
+    <span class="hud-label">COLORWAY</span>
+    <button class="hud-btn" data-colorway="obsidian">Obsidian</button>
+    <button class="hud-btn" data-colorway="aurora">Aurora</button>
+    <button class="hud-btn" data-colorway="ember">Ember</button>
   </div>
-
-  <div class="hud-panel hud-footer">
-    <span>Drag to orbit · Scroll to zoom</span>
+  <div class="hud-panel lighting-panel">
+    <span class="hud-label">LIGHTING</span>
+    <button class="hud-btn" data-lighting="studio">Studio</button>
+    <button class="hud-btn" data-lighting="dramatic">Dramatic</button>
+    <button class="hud-btn" data-lighting="ambient">Ambient</button>
   </div>
 </div>
-
-<script type="module" src="main.js"></script>
+<script type="module" src="./main.js"></script>
 </body>
 </html>

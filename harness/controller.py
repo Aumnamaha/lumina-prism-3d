@@ -166,7 +166,25 @@ def _apply_search_replace(original: str, search_block: str, replace_block: str, 
 def parse_and_apply_response(raw_text: str, current_files: dict[str, str]) -> tuple[dict, dict[str, str]]:
     """Strips thinking traces, verifies block closure integrity, and applies ===FILE:=== / ===EDIT:=== blocks."""
     cleaned = strip_reasoning(raw_text)
-
+    _norm_lines = []
+    _in_block = False
+    _hdr_re = re.compile(r"^===(?:META|FILE:[^\r\n=]+|EDIT:[^\r\n=]+)===\s*$")
+    _end_re = re.compile(r"^===END===\s*$")
+    for _ln in cleaned.splitlines():
+        if _hdr_re.match(_ln):
+            if _in_block:
+                _norm_lines.append("===END===")
+            _norm_lines.append(_ln.strip())
+            _in_block = True
+        elif _end_re.match(_ln):
+            if _in_block:
+                _norm_lines.append("===END===")
+                _in_block = False
+        else:
+            _norm_lines.append(_ln)
+    if _in_block:
+        _norm_lines.append("===END===")
+    cleaned = "\n".join(_norm_lines) + "\n"
     open_markers = re.findall(r"^===(?:META|FILE:[^\r\n=]+|EDIT:[^\r\n=]+)===\s*$", cleaned, flags=re.MULTILINE)
     close_markers = re.findall(r"^===END===\s*$", cleaned, flags=re.MULTILINE)
     if not open_markers or len(open_markers) != len(close_markers):
